@@ -1,13 +1,14 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "13fbcbd7273559d104f90934b0b403b2"
-application_url = "https://fairy-suite-levy-few.trycloudflare.com"
+application_url = "https://argentina-stomach-claire-uni.trycloudflare.com"
 embedded = true
 name = "remix-chat"
 handle = "remix-chat-193"
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-01"
@@ -18,9 +19,9 @@ scopes = "read_inventory,read_products,write_discounts,write_products"
 
 [auth]
 redirect_urls = [
-  "https://fairy-suite-levy-few.trycloudflare.com/auth/callback",
-  "https://fairy-suite-levy-few.trycloudflare.com/auth/shopify/callback",
-  "https://fairy-suite-levy-few.trycloudflare.com/api/auth/callback"
+  "https://argentina-stomach-claire-uni.trycloudflare.com/auth/callback",
+  "https://argentina-stomach-claire-uni.trycloudflare.com/auth/shopify/callback",
+  "https://argentina-stomach-claire-uni.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

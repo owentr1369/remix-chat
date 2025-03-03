@@ -7,10 +7,11 @@ import { useState } from "react";
 export const action: ActionFunction = async ({ request }) => {
   const { admin } = await authenticate.admin(request);
   try {
+    const formData = await request.formData();
+    const title = formData.get("discountTitle") as string;
     const startsAt = "2025-01-01T00:00:00Z";
     const endsAt = "2025-12-31T23:59:59Z";
     const code = "10FORYOU";
-    const title = "10% off selected items";
     const minimumRequirementSubtotal = 2;
     const discountAmount = 3;
     const response = await admin.graphql(
@@ -74,11 +75,10 @@ export const action: ActionFunction = async ({ request }) => {
         },
       },
     );
-
     if (response.ok) {
       const data = await response.json();
       console.log("Created discount");
-      return Response.json(data);
+      return new Response(JSON.stringify(data), { status: 200 });
     }
     return null;
   } catch (err) {
