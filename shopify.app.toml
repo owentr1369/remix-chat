@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "13fbcbd7273559d104f90934b0b403b2"
-application_url = "https://regard-mounted-destruction-veteran.trycloudflare.com"
+application_url = "https://included-tampa-reservations-bride.trycloudflare.com"
 embedded = true
 name = "remix-chat"
 handle = "remix-chat-193"
@@ -27,9 +27,9 @@ scopes = "read_inventory,read_products,write_customers,write_discounts,write_pro
 
 [auth]
 redirect_urls = [
-  "https://regard-mounted-destruction-veteran.trycloudflare.com/auth/callback",
-  "https://regard-mounted-destruction-veteran.trycloudflare.com/auth/shopify/callback",
-  "https://regard-mounted-destruction-veteran.trycloudflare.com/api/auth/callback"
+  "https://included-tampa-reservations-bride.trycloudflare.com/auth/callback",
+  "https://included-tampa-reservations-bride.trycloudflare.com/auth/shopify/callback",
+  "https://included-tampa-reservations-bride.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
