@@ -1,47 +1,51 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { Card, Layout, Page } from "@shopify/polaris";
-import { authenticate, apiVersion } from "app/shopify.server";
-
-export const query = `{
-  collections(first)
-}`;
+import { useLoaderData } from "@remix-run/react";
+import { Card, Layout, List, Page } from "@shopify/polaris";
+// import { apiVersion, authenticate } from "./shopify.server";
+import { apiVersion, authenticate } from "app/shopify.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const { session } = await authenticate.admin(request);
   const { shop, accessToken } = session;
 
-  try {
-    const response = await fetch(
-      `https://${shop}/admin/api/${apiVersion}/graphql.json`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Shopify-Access-Token": accessToken,
-        },
-        body: query,
+  const response = await fetch(
+    `https://${shop}/admin/api/${apiVersion}/custom_collections.json`,
+    {
+      headers: {
+        "X-Shopify-Access-Token": accessToken,
       },
-    );
-    if (response.ok) {
-      const data = await response.json();
-      const {
-        data: {
-          collections: { edges },
-        },
-      } = data;
-      return edges;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+    },
+  )
+    .then((response) => response.json())
+    .then((json) => json.custom_collections);
+  return response;
 };
 
 const Collections = () => {
+  const collections: any = useLoaderData();
+  console.log(collections, "collections");
+
   return (
     <Page>
       <Layout>
         <Layout.Section>
-          <Card>Collections</Card>
+          <Card>
+            <h1>hello world</h1>
+          </Card>
+        </Layout.Section>
+        <Layout.Section>
+          <Card>
+            <List type="bullet" gap="loose">
+              {collections?.map((collection: any) => {
+                return (
+                  <List.Item key={collection.id}>
+                    <h2>{collection.title}</h2>
+                    <h2>{collection.description}</h2>
+                  </List.Item>
+                );
+              })}
+            </List>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>

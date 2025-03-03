@@ -1,13 +1,14 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "8023ccb5bde0e960e5dd40875a7efaca"
-application_url = "https://took-palmer-continuous-convertible.trycloudflare.com"
+application_url = "https://kelkoo-trackback-kids-strategy.trycloudflare.com"
 embedded = true
 name = "remix-chat"
 handle = "remix-chat-193"
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-01"
@@ -18,9 +19,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://took-palmer-continuous-convertible.trycloudflare.com/auth/callback",
-  "https://took-palmer-continuous-convertible.trycloudflare.com/auth/shopify/callback",
-  "https://took-palmer-continuous-convertible.trycloudflare.com/api/auth/callback"
+  "https://kelkoo-trackback-kids-strategy.trycloudflare.com/auth/callback",
+  "https://kelkoo-trackback-kids-strategy.trycloudflare.com/auth/shopify/callback",
+  "https://kelkoo-trackback-kids-strategy.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
