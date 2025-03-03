@@ -2,7 +2,6 @@ import { ActionFunction } from "@remix-run/node";
 import { useActionData, useSubmit, Form } from "@remix-run/react";
 import { authenticate } from "app/shopify.server";
 import { Button, Card, Page, TextField } from "@shopify/polaris";
-import { json } from "@remix-run/node";
 import { useState } from "react";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -16,38 +15,36 @@ export const action: ActionFunction = async ({ request }) => {
     const discountAmount = 3;
     const response = await admin.graphql(
       `#graphql
-  mutation CreateDiscountCode($basicCodeDiscount: DiscountCodeBasicInput!) {
+    mutation CreateDiscountCode($basicCodeDiscount: DiscountCodeBasicInput!) {
     discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
       codeDiscountNode {
-        id
-        codeDiscount {
-          ... on DiscountCodeBasic {
-            title
-            startsAt
-            endsAt
-            customerSelection {
-              ... on DiscountCustomers {
-                customers {
-                  id
-                }
-              }
-            }
-            customerGets {
-              value {
-                ... on DiscountPercentage {
-                  percentage
-                }
-              }
-            }
+      id
+      codeDiscount {
+        ... on DiscountCodeBasic {
+        title
+        startsAt
+        endsAt
+        customerSelection {
+          ... on DiscountCustomers {
+          all
           }
         }
+        customerGets {
+          value {
+          ... on DiscountPercentage {
+            percentage
+          }
+          }
+        }
+        }
+      }
       }
       userErrors {
-        field
-        message
+      field
+      message
       }
     }
-  }`,
+    }`,
       {
         variables: {
           basicCodeDiscount: {
@@ -55,11 +52,9 @@ export const action: ActionFunction = async ({ request }) => {
             code,
             startsAt,
             endsAt,
-            // customerSelection: {
-            //   customers: {
-            //     add: ["gid://shopify/Customer/624407574"],
-            //   },
-            // },
+            customerSelection: {
+              all: true,
+            },
             customerGets: {
               value: {
                 percentage: 0.1,
@@ -83,13 +78,12 @@ export const action: ActionFunction = async ({ request }) => {
     if (response.ok) {
       const data = await response.json();
       console.log("Created discount");
-      return json({
-        discount: data.data,
-      });
+      return Response.json(data);
     }
     return null;
   } catch (err) {
     console.error(err);
+    return new Response("Internal Server Error", { status: 500 });
   }
 };
 const AppDiscount = () => {
