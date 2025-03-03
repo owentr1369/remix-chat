@@ -1,31 +1,36 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "bf9c1f00221e683d230a1673e3c7efd7"
-application_url = "https://example.com/"
+client_id = "8023ccb5bde0e960e5dd40875a7efaca"
+application_url = "https://wv-ext-keywords-intranet.trycloudflare.com"
 embedded = true
 name = "remix-chat"
-handle = "remix-chat-159"
+handle = "remix-chat-193"
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-01"
 
   [[webhooks.subscriptions]]
-  topics = [ "app/uninstalled" ]
-  uri = "/webhooks/app/uninstalled"
-
-  [[webhooks.subscriptions]]
   topics = [ "app/scopes_update" ]
   uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products,read_products,read_inventory,write_discounts"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://wv-ext-keywords-intranet.trycloudflare.com/auth/callback",
+  "https://wv-ext-keywords-intranet.trycloudflare.com/auth/shopify/callback",
+  "https://wv-ext-keywords-intranet.trycloudflare.com/api/auth/callback"
+]
 
 [pos]
 embedded = false

@@ -1,13 +1,12 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "8023ccb5bde0e960e5dd40875a7efaca"
-application_url = "https://fresh-auction-lauren-democrats.trycloudflare.com"
+client_id = "13fbcbd7273559d104f90934b0b403b2"
+application_url = "https://fairy-suite-levy-few.trycloudflare.com"
 embedded = true
 name = "remix-chat"
 handle = "remix-chat-193"
 
 [build]
-automatically_update_urls_on_dev = true
 include_config_on_deploy = true
 
 [webhooks]
@@ -15,13 +14,13 @@ api_version = "2025-01"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_inventory,read_products,write_discounts,write_products"
 
 [auth]
 redirect_urls = [
-  "https://fresh-auction-lauren-democrats.trycloudflare.com/auth/callback",
-  "https://fresh-auction-lauren-democrats.trycloudflare.com/auth/shopify/callback",
-  "https://fresh-auction-lauren-democrats.trycloudflare.com/api/auth/callback"
+  "https://fairy-suite-levy-few.trycloudflare.com/auth/callback",
+  "https://fairy-suite-levy-few.trycloudflare.com/auth/shopify/callback",
+  "https://fairy-suite-levy-few.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

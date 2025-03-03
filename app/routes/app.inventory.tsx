@@ -4,7 +4,7 @@ import { authenticate, apiVersion } from "app/shopify.server";
 import { Card, Layout, List, Page } from "@shopify/polaris";
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const { session, admin } = await authenticate.admin(request);
+  const { session } = await authenticate.admin(request);
 
   try {
     const response = await fetch(
