@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     `https://${shop}/admin/api/${apiVersion}/custom_collections.json`,
     {
       headers: {
-        "X-Shopify-Access-Token": accessToken,
+        "X-Shopify-Access-Token": accessToken || "",
       },
     },
   )
